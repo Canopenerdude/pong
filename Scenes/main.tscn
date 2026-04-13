@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://b821myv7hqira"]
+
+[ext_resource type="Script" uid="uid://cef3f6fod8xae" path="res://Scripts/player_paddle.gd" id="1_bo1nx"]
+[ext_resource type="Texture2D" uid="uid://f0utvxt0fri5" path="res://icon.svg" id="1_jjgbg"]
+[ext_resource type="Script" uid="uid://bh2s8a2hamj04" path="res://Scripts/ball.gd" id="3_8gbba"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bo1nx"]
+size = Vector2(68, 452)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bo1nx"]
+radius = 66.48308
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8gbba"]
+size = Vector2(1596, 48)
+
+[node name="Main" type="Node2D" unique_id=186691470]
+
+[node name="PlayerPaddle" type="CharacterBody2D" parent="." unique_id=1598801292]
+position = Vector2(169, 476)
+script = ExtResource("1_bo1nx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerPaddle" unique_id=1676465928]
+shape = SubResource("RectangleShape2D_bo1nx")
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerPaddle" unique_id=999608567]
+rotation = -1.5707964
+scale = Vector2(3.5742188, 0.5507812)
+texture = ExtResource("1_jjgbg")
+
+[node name="Ball" type="RigidBody2D" parent="." unique_id=1363216091]
+position = Vector2(934, 447)
+gravity_scale = 0.0
+script = ExtResource("3_8gbba")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball" unique_id=2098182783]
+shape = SubResource("CircleShape2D_bo1nx")
+
+[node name="Sprite2D" type="Sprite2D" parent="Ball" unique_id=849298366]
+position = Vector2(0, -2.0000048)
+scale = Vector2(0.6875, 0.79687494)
+texture = ExtResource("1_jjgbg")
+
+[node name="BounceWall" type="Area2D" parent="." unique_id=1482501845]
+position = Vector2(783, 5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BounceWall" unique_id=2137256353]
+position = Vector2(13, 0)
+shape = SubResource("RectangleShape2D_8gbba")
