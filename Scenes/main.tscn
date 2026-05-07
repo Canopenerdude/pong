@@ -2,21 +2,27 @@
 
 [ext_resource type="Script" uid="uid://cef3f6fod8xae" path="res://Scripts/player_paddle.gd" id="1_bo1nx"]
 [ext_resource type="Texture2D" uid="uid://f0utvxt0fri5" path="res://icon.svg" id="1_jjgbg"]
-[ext_resource type="Script" uid="uid://bh2s8a2hamj04" path="res://Scripts/ball.gd" id="3_8gbba"]
+[ext_resource type="Script" uid="uid://bhlcch6flsugx" path="res://Scripts/InstanceBall.gd" id="1_jjvhh"]
+[ext_resource type="PackedScene" uid="uid://bkgsgplmdrdk4" path="res://Scenes/ball.tscn" id="3_jjvhh"]
+[ext_resource type="Script" uid="uid://dawikcpkokgga" path="res://Scripts/Goal.gd" id="4_jjvhh"]
+[ext_resource type="Script" uid="uid://slguph6ti3pw" path="res://Scenes/player_2_paddle.gd" id="5_21xkr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bo1nx"]
 size = Vector2(68, 452)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_bo1nx"]
-radius = 66.48308
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8gbba"]
-size = Vector2(1596, 48)
+size = Vector2(1596, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kry3j"]
+size = Vector2(1548, 111)
 
 [node name="Main" type="Node2D" unique_id=186691470]
+script = ExtResource("1_jjvhh")
+ball_scene = ExtResource("3_jjvhh")
 
-[node name="PlayerPaddle" type="CharacterBody2D" parent="." unique_id=1598801292]
+[node name="PlayerPaddle" type="AnimatableBody2D" parent="." unique_id=1899771325]
 position = Vector2(169, 476)
+sync_to_physics = false
 script = ExtResource("1_bo1nx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerPaddle" unique_id=1676465928]
@@ -27,22 +33,56 @@ rotation = -1.5707964
 scale = Vector2(3.5742188, 0.5507812)
 texture = ExtResource("1_jjgbg")
 
-[node name="Ball" type="RigidBody2D" parent="." unique_id=1363216091]
-position = Vector2(934, 447)
-gravity_scale = 0.0
-script = ExtResource("3_8gbba")
+[node name="Player2Paddle" type="AnimatableBody2D" parent="." unique_id=1002356918]
+position = Vector2(1425, 476)
+sync_to_physics = false
+script = ExtResource("5_21xkr")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball" unique_id=2098182783]
-shape = SubResource("CircleShape2D_bo1nx")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player2Paddle" unique_id=352635259]
+shape = SubResource("RectangleShape2D_bo1nx")
 
-[node name="Sprite2D" type="Sprite2D" parent="Ball" unique_id=849298366]
-position = Vector2(0, -2.0000048)
-scale = Vector2(0.6875, 0.79687494)
+[node name="Sprite2D" type="Sprite2D" parent="Player2Paddle" unique_id=1949092177]
+rotation = -1.5707964
+scale = Vector2(3.5742188, 0.5507812)
 texture = ExtResource("1_jjgbg")
 
-[node name="BounceWall" type="Area2D" parent="." unique_id=1482501845]
+[node name="BounceWall" type="StaticBody2D" parent="." unique_id=519204658]
 position = Vector2(783, 5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BounceWall" unique_id=2137256353]
 position = Vector2(13, 0)
 shape = SubResource("RectangleShape2D_8gbba")
+
+[node name="BounceWall2" type="StaticBody2D" parent="." unique_id=1594065394]
+position = Vector2(783, 889)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BounceWall2" unique_id=299092419]
+position = Vector2(13, 0)
+shape = SubResource("RectangleShape2D_8gbba")
+
+[node name="PlayerGoal" type="Area2D" parent="." unique_id=1231332391]
+position = Vector2(27, 437.99997)
+rotation = 1.5707964
+scale = Vector2(0.56, 1)
+script = ExtResource("4_jjvhh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerGoal" unique_id=731666725]
+position = Vector2(20.428467, -31.5)
+shape = SubResource("RectangleShape2D_kry3j")
+
+[node name="OppGoal" type="Area2D" parent="." unique_id=1831413295]
+position = Vector2(1511, 438)
+rotation = 1.5707964
+scale = Vector2(0.56, 1)
+script = ExtResource("4_jjvhh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OppGoal" unique_id=1077616193]
+position = Vector2(20.428467, -31.5)
+shape = SubResource("RectangleShape2D_kry3j")
+
+[node name="Timer" type="Timer" parent="." unique_id=57670501]
+one_shot = true
+
+[connection signal="body_entered" from="PlayerGoal" to="PlayerGoal" method="_on_body_entered"]
+[connection signal="body_entered" from="OppGoal" to="OppGoal" method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

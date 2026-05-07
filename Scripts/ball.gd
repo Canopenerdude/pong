@@ -6,7 +6,7 @@ var screen_size
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
 	direction = 180
-	direction += randf_range(-PI / 4, PI / 4)
+	direction += randf_range(-PI / 2, PI / 2)
 	rotation = direction
 	
 	var velocity = Vector2(randf_range(500.0, 1000.0), 0.0)
@@ -17,3 +17,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	position.x = clamp(position.x, 50, screen_size.x-50)
 	position.y = clamp(position.y, 50, screen_size.y-50)
+
+
+func _on_body_entered(body):
+	if body is StaticBody2D:
+		print("Wall Hit")
