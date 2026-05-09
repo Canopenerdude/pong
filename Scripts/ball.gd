@@ -9,7 +9,7 @@ func _ready() -> void:
 	direction += randf_range(-PI / 2, PI / 2)
 	rotation = direction
 	
-	var velocity = Vector2(randf_range(500.0, 1000.0), 0.0)
+	var velocity = Vector2(randf_range(800.0, 1000.0), 0.0)
 	linear_velocity = velocity.rotated(direction)
 
 
@@ -21,4 +21,4 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body):
 	if body is StaticBody2D:
-		print("Wall Hit")
+		linear_velocity *= 1.02

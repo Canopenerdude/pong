@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://mkm1wjtvulh0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wviqb"]
+font_size = 180
+
+[node name="UI" type="Node2D" unique_id=1581524719]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1985652401]
+layer = 2
+
+[node name="Player1Score" type="Label" parent="CanvasLayer" unique_id=1203049599]
+offset_left = 445.0
+offset_right = 548.0
+offset_bottom = 246.0
+text = "0"
+label_settings = SubResource("LabelSettings_wviqb")
+
+[node name="Player2Score" type="Label" parent="CanvasLayer" unique_id=1984368022]
+offset_left = 1081.0
+offset_right = 1184.0
+offset_bottom = 246.0
+text = "0"
+label_settings = SubResource("LabelSettings_wviqb")

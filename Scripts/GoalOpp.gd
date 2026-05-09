@@ -1,7 +1,7 @@
 extends Node
 
 var score: int = 0
-@onready var score_label = $"../UI/CanvasLayer/Player2Score"
+@onready var score_label = $"../UI/CanvasLayer/Player1Score"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

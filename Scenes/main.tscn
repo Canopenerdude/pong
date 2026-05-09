@@ -5,7 +5,9 @@
 [ext_resource type="Script" uid="uid://bhlcch6flsugx" path="res://Scripts/InstanceBall.gd" id="1_jjvhh"]
 [ext_resource type="PackedScene" uid="uid://bkgsgplmdrdk4" path="res://Scenes/ball.tscn" id="3_jjvhh"]
 [ext_resource type="Script" uid="uid://dawikcpkokgga" path="res://Scripts/Goal.gd" id="4_jjvhh"]
-[ext_resource type="Script" uid="uid://slguph6ti3pw" path="res://Scenes/player_2_paddle.gd" id="5_21xkr"]
+[ext_resource type="Script" uid="uid://slguph6ti3pw" path="res://Scripts/player_2_paddle.gd" id="5_21xkr"]
+[ext_resource type="Script" uid="uid://b3v0j8x7d6sl8" path="res://Scripts/GoalOpp.gd" id="7_6bp64"]
+[ext_resource type="PackedScene" uid="uid://mkm1wjtvulh0" path="res://Scenes/ui.tscn" id="8_344ge"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bo1nx"]
 size = Vector2(68, 452)
@@ -22,6 +24,7 @@ ball_scene = ExtResource("3_jjvhh")
 
 [node name="PlayerPaddle" type="AnimatableBody2D" parent="." unique_id=1899771325]
 position = Vector2(169, 476)
+scale = Vector2(0.8, 0.8)
 sync_to_physics = false
 script = ExtResource("1_bo1nx")
 
@@ -35,6 +38,7 @@ texture = ExtResource("1_jjgbg")
 
 [node name="Player2Paddle" type="AnimatableBody2D" parent="." unique_id=1002356918]
 position = Vector2(1425, 476)
+scale = Vector2(0.8, 0.8)
 sync_to_physics = false
 script = ExtResource("5_21xkr")
 
@@ -74,7 +78,7 @@ shape = SubResource("RectangleShape2D_kry3j")
 position = Vector2(1511, 438)
 rotation = 1.5707964
 scale = Vector2(0.56, 1)
-script = ExtResource("4_jjvhh")
+script = ExtResource("7_6bp64")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OppGoal" unique_id=1077616193]
 position = Vector2(20.428467, -31.5)
@@ -83,6 +87,10 @@ shape = SubResource("RectangleShape2D_kry3j")
 [node name="Timer" type="Timer" parent="." unique_id=57670501]
 one_shot = true
 
+[node name="UI" parent="." unique_id=1581524719 instance=ExtResource("8_344ge")]
+
 [connection signal="body_entered" from="PlayerGoal" to="PlayerGoal" method="_on_body_entered"]
 [connection signal="body_entered" from="OppGoal" to="OppGoal" method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+
+[editable path="UI"]
