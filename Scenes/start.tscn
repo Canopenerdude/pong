@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://p0gowk5w2yfb"]
+
+[ext_resource type="Theme" uid="uid://dn02r1cppru6c" path="res://TextStuff/SmallText.tres" id="1_r48yj"]
+[ext_resource type="Theme" uid="uid://kjt6hc2sgj8t" path="res://TextStuff/BigText.tres" id="2_5ogh5"]
+[ext_resource type="Script" uid="uid://b3343jle3ng08" path="res://Scenes/start_controller.gd" id="3_5ogh5"]
+
+[node name="Start" type="Node2D" unique_id=1061914527]
+
+[node name="BG" type="CanvasLayer" parent="." unique_id=616228323]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BG" unique_id=2094371750]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="BG/VBoxContainer" unique_id=1166541680]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.14044744, 0.14044744, 0.14044744, 1)
+
+[node name="Title" type="CanvasLayer" parent="." unique_id=1755203630]
+
+[node name="Part1" type="Label" parent="Title" unique_id=1014047441]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -800.5
+offset_right = 800.5
+offset_bottom = 165.0
+grow_horizontal = 2
+theme = ExtResource("1_r48yj")
+text = "Everyone says"
+
+[node name="Part2" type="Label" parent="Title" unique_id=157361865]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -543.0
+offset_top = 85.0
+offset_right = 273.0
+offset_bottom = 259.0
+grow_horizontal = 2
+theme = ExtResource("2_5ogh5")
+text = "\"MAKE PONG\""
+
+[node name="Part3" type="Label" parent="Title" unique_id=1867014030]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 343.0
+offset_top = 264.0
+offset_right = 664.0
+offset_bottom = 429.0
+grow_horizontal = 2
+theme = ExtResource("1_r48yj")
+text = "So I made Pong"
+horizontal_alignment = 2
+
+[node name="StartButton" type="CanvasLayer" parent="." unique_id=1301058179]
+
+[node name="Button" type="Button" parent="StartButton" unique_id=1469198770]
+offset_left = 484.0
+offset_top = 609.0
+offset_right = 1093.0
+offset_bottom = 787.0
+theme = ExtResource("2_5ogh5")
+text = "Click to Start"
+
+[node name="StartController" type="Node" parent="." unique_id=987434790]
+script = ExtResource("3_5ogh5")
+
+[connection signal="pressed" from="StartButton/Button" to="StartController" method="_on_button_pressed"]
