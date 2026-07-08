@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://dn02r1cppru6c" path="res://TextStuff/SmallText.tres" id="1_r48yj"]
 [ext_resource type="Theme" uid="uid://kjt6hc2sgj8t" path="res://TextStuff/BigText.tres" id="2_5ogh5"]
-[ext_resource type="Script" uid="uid://b3343jle3ng08" path="res://Scenes/start_controller.gd" id="3_5ogh5"]
+[ext_resource type="Script" uid="uid://b3343jle3ng08" path="res://Scripts/start_controller.gd" id="3_5ogh5"]
 
 [node name="Start" type="Node2D" unique_id=1061914527]
 
@@ -32,6 +32,7 @@ offset_bottom = 165.0
 grow_horizontal = 2
 theme = ExtResource("1_r48yj")
 text = "Everyone says"
+metadata/_edit_use_anchors_ = true
 
 [node name="Part2" type="Label" parent="Title" unique_id=157361865]
 anchors_preset = 5
@@ -44,6 +45,7 @@ offset_bottom = 259.0
 grow_horizontal = 2
 theme = ExtResource("2_5ogh5")
 text = "\"MAKE PONG\""
+metadata/_edit_use_anchors_ = true
 
 [node name="Part3" type="Label" parent="Title" unique_id=1867014030]
 anchors_preset = 5
