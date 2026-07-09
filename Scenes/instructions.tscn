@@ -6,7 +6,11 @@
 
 [node name="Instructions" type="Node2D" unique_id=1234127086]
 
+[node name="Controller" type="Node" parent="." unique_id=1143124978]
+script = ExtResource("3_5doqj")
+
 [node name="BG" type="CanvasLayer" parent="." unique_id=946875196]
+layer = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="BG" unique_id=173914478]
 anchors_preset = 15
@@ -20,30 +24,25 @@ layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.14044744, 0.14044744, 0.14044744, 1)
 
-[node name="Title" type="CanvasLayer" parent="." unique_id=510524747]
+[node name="NotBG" type="CanvasLayer" parent="." unique_id=1354691416]
 
-[node name="Part2" type="Label" parent="Title" unique_id=1106160632]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -798.0
-offset_top = 85.0
-offset_right = 797.0
-offset_bottom = 259.0
-grow_horizontal = 2
+[node name="VBoxContainer2" type="VBoxContainer" parent="NotBG" unique_id=42907080]
+z_index = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.74600005
+offset_right = 1.0
+offset_bottom = -0.4000244
+alignment = 1
+
+[node name="Part2" type="Label" parent="NotBG/VBoxContainer2" unique_id=1106160632]
+layout_mode = 2
 theme = ExtResource("1_dxknu")
 text = "Instructions"
 horizontal_alignment = 1
 
-[node name="Part3" type="Label" parent="Title" unique_id=415029636]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -479.0
-offset_top = 276.0
-offset_right = 535.0
-offset_bottom = 551.0
-grow_horizontal = 2
+[node name="Part3" type="Label" parent="NotBG/VBoxContainer2" unique_id=415029636]
+layout_mode = 2
 theme = ExtResource("2_5doqj")
 text = "Right Player: W for up, S for down
 Left Player: Up Arrow for up, Down Arrow for down
@@ -53,15 +52,13 @@ First to ten points wins
 Game begins IMMEDIATELY when button below is pressed."
 horizontal_alignment = 1
 
-[node name="StartButton" type="CanvasLayer" parent="." unique_id=337001927]
-
-[node name="Button" type="Button" parent="StartButton" unique_id=1308141769]
-offset_left = 484.0
-offset_top = 609.0
-offset_right = 1093.0
-offset_bottom = 787.0
+[node name="Button" type="Button" parent="NotBG/VBoxContainer2" unique_id=1308141769]
+layout_mode = 2
+size_flags_horizontal = 4
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, 119.98)
+offset_transform_visual_only = false
 theme = ExtResource("1_dxknu")
 text = "Click to Start"
 
-[node name="Controller" type="Node" parent="." unique_id=1143124978]
-script = ExtResource("3_5doqj")
+[connection signal="pressed" from="NotBG/VBoxContainer2/Button" to="Controller" method="_on_button_pressed"]
