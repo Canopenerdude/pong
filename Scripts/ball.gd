@@ -1,6 +1,7 @@
 extends RigidBody2D
 var direction
 var screen_size
+@onready var BounceSound = $BounceSound
 
 
 func _ready() -> void:
@@ -18,3 +19,4 @@ func _process(delta):
 func _on_body_entered(body):
 	if body is StaticBody2D:
 		linear_velocity *= 1.08
+		BounceSound.play()

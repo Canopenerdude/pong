@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://bkgsgplmdrdk4"]
 
 [ext_resource type="Script" uid="uid://bh2s8a2hamj04" path="res://Scripts/ball.gd" id="1_ij5cq"]
-[ext_resource type="Texture2D" uid="uid://f0utvxt0fri5" path="res://icon.svg" id="2_376qj"]
+[ext_resource type="Texture2D" uid="uid://dw0jw6l1ulsmb" path="res://Sprites/Ball.png" id="2_376qj"]
+[ext_resource type="AudioStream" uid="uid://byy4d1ophdqg4" path="res://Sounds/badswap.wav" id="3_376qj"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8gbba"]
 friction = 0.0
@@ -26,5 +27,9 @@ shape = SubResource("CircleShape2D_bo1nx")
 position = Vector2(0, -2.0000048)
 scale = Vector2(0.6875, 0.79687494)
 texture = ExtResource("2_376qj")
+
+[node name="BounceSound" type="AudioStreamPlayer2D" parent="." unique_id=1683692106]
+stream = ExtResource("3_376qj")
+volume_db = -8.5
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

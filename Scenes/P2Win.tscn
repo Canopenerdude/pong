@@ -3,6 +3,7 @@
 [ext_resource type="Theme" uid="uid://kjt6hc2sgj8t" path="res://TextStuff/BigText.tres" id="1_5okok"]
 [ext_resource type="Theme" uid="uid://dn02r1cppru6c" path="res://TextStuff/SmallText.tres" id="2_65sfn"]
 [ext_resource type="Script" uid="uid://0xm6n6td6sut" path="res://Scripts/QuitController.gd" id="3_nt7p1"]
+[ext_resource type="AudioStream" uid="uid://b4gsch046ts0y" path="res://Sounds/button16.wav" id="4_65sfn"]
 
 [node name="P1Win" type="Node2D" unique_id=1377902452]
 
@@ -77,5 +78,11 @@ text = "Quit"
 [node name="Controller" type="Node" parent="." unique_id=2034665453]
 script = ExtResource("3_nt7p1")
 
+[node name="ButtonClick" type="AudioStreamPlayer2D" parent="." unique_id=207325346]
+unique_name_in_owner = true
+stream = ExtResource("4_65sfn")
+
+[connection signal="button_down" from="Buttons/BoxContainer/ReturnToStart" to="Controller" method="_on_return_to_start_button_down"]
 [connection signal="pressed" from="Buttons/BoxContainer/ReturnToStart" to="Controller" method="_on_return_to_start_pressed"]
+[connection signal="button_down" from="Buttons/BoxContainer/Quit" to="Controller" method="_on_quit_button_down"]
 [connection signal="pressed" from="Buttons/BoxContainer/Quit" to="Controller" method="_on_quit_pressed"]

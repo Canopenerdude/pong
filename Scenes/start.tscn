@@ -3,6 +3,7 @@
 [ext_resource type="Theme" uid="uid://dn02r1cppru6c" path="res://TextStuff/SmallText.tres" id="1_r48yj"]
 [ext_resource type="Theme" uid="uid://kjt6hc2sgj8t" path="res://TextStuff/BigText.tres" id="2_5ogh5"]
 [ext_resource type="Script" uid="uid://b3343jle3ng08" path="res://Scripts/start_controller.gd" id="3_5ogh5"]
+[ext_resource type="AudioStream" uid="uid://b4gsch046ts0y" path="res://Sounds/button16.wav" id="4_lb6bl"]
 
 [node name="Start" type="Node2D" unique_id=1061914527]
 
@@ -71,4 +72,9 @@ text = "Click to Start"
 [node name="StartController" type="Node" parent="." unique_id=987434790]
 script = ExtResource("3_5ogh5")
 
+[node name="ButtonClick" type="AudioStreamPlayer2D" parent="." unique_id=1736304605]
+unique_name_in_owner = true
+stream = ExtResource("4_lb6bl")
+
+[connection signal="button_down" from="StartButton/BoxContainer/Button" to="StartController" method="_on_button_button_down"]
 [connection signal="pressed" from="StartButton/BoxContainer/Button" to="StartController" method="_on_button_pressed"]
